@@ -1,8 +1,14 @@
 package com.example.dimuch.companion.feature.views;
 
+import com.arellomobile.mvp.MvpView;
+import com.arellomobile.mvp.viewstate.strategy.AddToEndStrategy;
+import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
+
 /**
  * Created by Dimuch on 27.11.2017.
  */
 
-public interface IMenuActivityView {
+@StateStrategyType(AddToEndStrategy.class) public interface IMenuActivityView extends MvpView {
+
+  void showToast(String sToastMessage);
 }

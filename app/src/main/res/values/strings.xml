@@ -1,3 +1,6 @@
 <resources>
   <string name="app_name">Companion</string>
+  <string name="map">Карта</string>
+  <string name="store_list">Список магазинов</string>
+  <string name="for_future">На будущее</string>
 </resources>
