@@ -10,9 +10,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.example.dimuch.companion.R;
-import com.example.dimuch.companion.feature.views.IMenuActivityView;
+import com.example.dimuch.companion.feature.views.IMainActivityView;
 
-public class MenuActivity extends MvpAppCompatActivity implements IMenuActivityView {
+public class MainActivity extends MvpAppCompatActivity implements IMainActivityView {
 
   @BindView(R.id.bMap) Button bMap;
   @BindView(R.id.bStoreList) Button bStoreList;
@@ -20,7 +20,7 @@ public class MenuActivity extends MvpAppCompatActivity implements IMenuActivityV
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_menu);
+    setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
   }
 

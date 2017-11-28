@@ -8,7 +8,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  * Created by Dimuch on 27.11.2017.
  */
 
-@StateStrategyType(AddToEndStrategy.class) public interface IMenuActivityView extends MvpView {
+@StateStrategyType(AddToEndStrategy.class) public interface IMainActivityView extends MvpView {
 
   void showToast(String sToastMessage);
 }
