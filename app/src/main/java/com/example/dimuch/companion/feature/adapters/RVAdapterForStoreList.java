@@ -45,4 +45,10 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
   @Override public void onAttachedToRecyclerView(RecyclerView recyclerView) {
     super.onAttachedToRecyclerView(recyclerView);
   }
+
+  public void updateData(List<String> viewModels) {
+    mStoreList.clear();
+    mStoreList.addAll(viewModels);
+    notifyDataSetChanged();
+  }
 }
