@@ -33,7 +33,9 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
 
   @OnClick(R.id.bStoreList) public void bStoreListClick(View view) {
     showToast("bStoreList");
-    // TODO opens activity_store_list ...
+
+    Intent intent = new Intent(this, StoreListActivity.class);
+    startActivity(intent);
   }
 
   @OnClick(R.id.bForFuture) public void bForFutureClick(View view) {

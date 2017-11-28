@@ -19,10 +19,10 @@
     <activity
         android:name=".feature.activities.MapActivity"
         android:parentActivityName=".feature.activities.MainActivity" >
-      <!-- The meta-data tag is required if you support API level 15 and lower -->
-      <meta-data
-          android:name="android.support.PARENT_ACTIVITY"
-          android:value=".feature.activities.MainActivity" />
+    </activity>
+    <activity
+        android:name=".feature.activities.StoreListActivity"
+        android:parentActivityName=".feature.activities.MainActivity" >
     </activity>
   </application>
 
