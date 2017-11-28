@@ -3,4 +3,5 @@
   <string name="map">Карта</string>
   <string name="store_list">Список магазинов</string>
   <string name="for_future">На будущее</string>
+  <string name="search">Search</string>
 </resources>
