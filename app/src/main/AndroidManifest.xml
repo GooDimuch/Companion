@@ -24,6 +24,10 @@
         android:name=".feature.activities.StoreListActivity"
         android:parentActivityName=".feature.activities.MainActivity" >
     </activity>
+    <activity
+        android:name=".feature.activities.StoreActivity"
+        android:parentActivityName=".feature.activities.StoreListActivity" >
+    </activity>
   </application>
 
 </manifest>
