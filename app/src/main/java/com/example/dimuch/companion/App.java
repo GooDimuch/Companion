@@ -26,4 +26,5 @@ public class App extends Application {
   private AppComponent buildComponent() {
     return DaggerAppComponent.builder().appModule(new AppModule(this)).build();
   }
+
 }

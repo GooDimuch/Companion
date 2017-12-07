@@ -1,6 +1,7 @@
 package com.example.dimuch.companion.di.modules;
 
 import com.example.dimuch.companion.data.DataManager;
+import com.example.dimuch.companion.data.model.AllData;
 import com.example.dimuch.companion.data.remote.RestApi;
 import dagger.Module;
 import dagger.Provides;
@@ -10,8 +11,12 @@ import dagger.Provides;
  */
 @Module public class DataModule {
 
-  @Provides RestApi provideRestApi() {
-    return new RestApi();
+  @Provides AllData provideAllData() {
+    return new AllData();
+  }
+
+  @Provides RestApi provideRestApi(AllData allData) {
+    return new RestApi(allData);
   }
 
   @Provides DataManager provideDataManager(RestApi restApi) {

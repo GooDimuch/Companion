@@ -1,7 +1,11 @@
 package com.example.dimuch.companion.utils;
 
+import com.example.dimuch.companion.App;
+import com.example.dimuch.companion.data.DataManager;
+import com.example.dimuch.companion.data.model.StoreName;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import rx.Observable;
 
 /**
@@ -10,61 +14,49 @@ import rx.Observable;
 
 public class StoreListHelper {
 
-  private List<String> storeList;
+  @Inject DataManager mDataManager;
+  private List<String> mStoreList;
 
   public StoreListHelper() {
-    this.storeList = new ArrayList<>();
+    App.getComponent().inject(this);
+    mStoreList = new ArrayList<>();
   }
 
-  public List<String> getStoreList() {
+  public List<String> getmStoreList() {
+
     return testListForRV();
   }
 
-  public void setStoreList(List<String> storeList) {
-    this.storeList = storeList;
+  public void setmStoreList(List<String> mStoreList) {
+    this.mStoreList = mStoreList;
   }
 
   public List<String> getListYouAreLookingFor(String searchedCombination) {
     List<String> list = new ArrayList<>();
 
-    Observable.from(getStoreList())
+    Observable.from(getmStoreList())
         .filter(s -> s.toLowerCase().contains(searchedCombination.toLowerCase()))
         .subscribe(list::add);
 
-    return searchedCombination.isEmpty() ? getStoreList() : list;
+    return searchedCombination.isEmpty() ? getmStoreList() : list;
   }
 
   private List<String> testListForRV() {
-    List<String> testList = new ArrayList<>();
-    testList.add("Магазин №1");
-    testList.add("Магазин №2");
-    testList.add("Магазин №3");
-    testList.add("Магазин №4");
-    testList.add("Магазин №5");
-    testList.add("Магазин №6");
-    testList.add("Магазин №7");
-    testList.add("Магазин №8");
-    testList.add("Магазин №9");
-    testList.add("Магазин №10");
-    testList.add("Магазин №11");
-    testList.add("Магазин №12");
-    testList.add("Магазин №13");
-    testList.add("Магазин №14");
-    testList.add("Магазин №15");
-    testList.add("Магазин №16");
-    testList.add("Магазин №17");
-    testList.add("Магазин №18");
-    testList.add("Магазин №19");
-    testList.add("Магазин №20");
-    testList.add("Магазин №21");
-    testList.add("Магазин №22");
-    testList.add("Магазин №23");
-    testList.add("Магазин №24");
-    testList.add("Магазин №25");
-    testList.add("Магазин №26");
-    testList.add("Магазин №27");
-    testList.add("Магазин №28");
-    testList.add("Магазин №29");
-    return testList;
+    List<String> list = new ArrayList<>();
+
+    mDataManager.getStoreNameList()
+        .flatMap(Observable::from)
+        .map(StoreName::getmStoreName)
+        .subscribe(list::add);
+
+    return list;
   }
+
+  //private List<String> testListForRV() {
+  //  List<String> testList = new ArrayList<>();
+  //  for (int i = 0; i < 25; i++) {
+  //    testList.add("Магазин №" + i);
+  //  }
+  //  return testList;
+  //}
 }

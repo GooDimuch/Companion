@@ -40,7 +40,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
     LinearLayoutManager layoutManagerForStores =
         new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
     rvStoreList.setLayoutManager(layoutManagerForStores);
-    rvAdapterForStoreList = new RVAdapterForStoreList(mStoreListHelper.getStoreList());
+    rvAdapterForStoreList = new RVAdapterForStoreList(mStoreListHelper.getmStoreList());
     rvStoreList.setAdapter(rvAdapterForStoreList);
 
     ItemClickSupport.addTo(rvStoreList).setOnItemClickListener((recyclerView, position, v) -> {
