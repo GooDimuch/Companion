@@ -18,7 +18,7 @@ public class StoreActivity extends MvpAppCompatActivity implements IStoreActivit
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_map);
     ButterKnife.bind(this);
-    setTitle(R.string.store);
+    setTitle(getIntent().getStringExtra("item_position"));
   }
 
   @Override public void showToast(String sToastMessage) {

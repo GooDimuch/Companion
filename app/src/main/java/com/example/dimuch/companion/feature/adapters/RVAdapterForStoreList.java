@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import com.example.dimuch.companion.R;
 import java.util.List;
 import timber.log.Timber;
@@ -29,10 +28,6 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-
-    @OnClick void onClickItem(View view) {
-      Timber.d(getAdapterPosition() + " pos");
-    }
   }
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -53,6 +48,9 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
     super.onAttachedToRecyclerView(recyclerView);
   }
 
+  public String getTVStore (int position) {
+    return mStoreList.get(position);
+  }
   public void updateData(List<String> viewModels) {
     mStoreList.clear();
     mStoreList.addAll(viewModels);
