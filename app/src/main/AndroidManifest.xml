@@ -27,7 +27,7 @@
     </activity>
     <activity
         android:name=".feature.activities.StoreActivity"
-        android:parentActivityName=".feature.activities.StoreListActivity">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
   </application>
 

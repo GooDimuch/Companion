@@ -11,4 +11,20 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndStrategy.class) public interface IStoreActivityView extends MvpView {
 
   void showToast(String sToastMessage);
+
+  void setLogoStore(int iLogoStore);
+
+  void setNameStore(String sNameStore);
+
+  void setRatingStore(float fRatingStore);
+
+  void setTypeStore(String sTypeStore);
+
+  void setAddressStore(String sAddressStore);
+
+  void setWebSiteStore(String sWebSiteStore);
+
+  void setPhoneStore(String sPhoneStore);
+
+  void setWorkScheduleStore(String sWorkScheduleStore);
 }
