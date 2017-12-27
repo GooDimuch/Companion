@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "673539247652",
+    "firebase_url": "https://companion-b4ada.firebaseio.com",
+    "project_id": "companion-b4ada",
+    "storage_bucket": "companion-b4ada.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673539247652:android:adc3241804e63f06",
+        "android_client_info": {
+          "package_name": "com.example.dimuch.companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673539247652-0rtf4ga0o4dftmlac1oeqdtfm8aiid17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dimuch.companion",
+            "certificate_hash": "efc682821608139699e8dc953893eb69fc25818a"
+          }
+        },
+        {
+          "client_id": "673539247652-5kv1fe3salrfnifjic5qdm3pjuv4btuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOmH3_B36t1m5dtjSqS-AUfd8Yt9VQk0k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673539247652-5kv1fe3salrfnifjic5qdm3pjuv4btuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

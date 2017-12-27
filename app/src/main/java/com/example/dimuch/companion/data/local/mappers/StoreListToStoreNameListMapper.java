@@ -18,7 +18,7 @@ public class StoreListToStoreNameListMapper implements Mapper<List<Store>, List<
   @Override public List<StoreName> transform(List<Store> storeList) throws RuntimeException {
     mStoreList = storeList;
 
-    Observable.from(storeList).map(Store::getmStoreName).map(s -> {
+    Observable.from(storeList).map(Store::getNameStore).map(s -> {
       StoreName storeName = new StoreName();
       storeName.setmStoreName(s);
       return storeName;

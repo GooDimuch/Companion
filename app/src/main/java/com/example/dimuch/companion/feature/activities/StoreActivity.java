@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.dimuch.companion.R;
+import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.feature.views.IStoreActivityView;
 
 public class StoreActivity extends AppCompatActivity implements IStoreActivityView {
@@ -38,16 +39,10 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
 
-    double rating = 7 / 2.0;
-
-    setLogoStore(R.drawable.store);
-    setNameStore(getIntent().getStringExtra("item_position"));
-    setRatingStore((float) rating);
-    setTypeStore("Магазин электроники");
-    setAddressStore("вулиця Ярославська, 57, Київ, 02000");
-    setWebSiteStore("rozetka.com.ua");
-    setPhoneStore("044 503 8080");
-    setWorkScheduleStore("Открыто:  10–21\n"
+    Store tempStore =
+        new Store(R.drawable.store, getIntent().getStringExtra("item_position"), 7 / 2.0,
+            "Магазин электроники", "вулиця Ярославська, 57, Київ, 02000", "rozetka.com.ua",
+            "044 503 8080", "Открыто:  10–21\n"
         + "понедельник\t10–21\n"
         + "вторник\t10–21\n"
         + "среда\t10–21\n"
@@ -55,6 +50,15 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
         + "пятница\t10–21\n"
         + "суббота\t10–21\n"
         + "воскресенье\t10–18\n");
+
+    setLogoStore(tempStore.getLogoStore());
+    setNameStore(tempStore.getNameStore());
+    setRatingStore(tempStore.getRatingStore());
+    setTypeStore(tempStore.getTypeStore());
+    setAddressStore(tempStore.getAddressStore());
+    setWebSiteStore(tempStore.getWebSiteStore());
+    setPhoneStore(tempStore.getPhoneStore());
+    setWorkScheduleStore(tempStore.getWorkScheduleStore());
   }
 
   @OnClick(R.id.fab) public void onClickFab(View view) {

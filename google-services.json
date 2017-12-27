@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "923835861335",
+    "firebase_url": "https://companion-goodimuch.firebaseio.com",
+    "project_id": "companion-goodimuch",
+    "storage_bucket": "companion-goodimuch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923835861335:android:adc3241804e63f06",
+        "android_client_info": {
+          "package_name": "com.example.dimuch.companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923835861335-safjg18e61qaaqlhnn37vo7ed06decdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLxTRzUEbHaJrqScVZIkHkYKJ3z9HvES8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

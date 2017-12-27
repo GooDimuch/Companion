@@ -20,8 +20,7 @@ public class AllData {
   private List<Store> createStoreList() {
     List<Store> list = new ArrayList<>();
     for (int i = 0; i < 25; i++) {
-      Store store = new Store();
-      store.setmStoreName("Магазин №" + i);
+      Store store = new Store("Магазин №" + i);
       list.add(store);
     }
     return list;
