@@ -18,6 +18,8 @@ import butterknife.OnClick;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.feature.views.IStoreActivityView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class StoreActivity extends AppCompatActivity implements IStoreActivityView {
 
@@ -38,6 +40,9 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
     setContentView(R.layout.activity_store);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
+
+    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+
 
     Store tempStore =
         new Store(R.drawable.store, getIntent().getStringExtra("item_position"), 7 / 2.0,
