@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "361842873439",
+    "firebase_url": "https://iteachat-65567.firebaseio.com",
+    "project_id": "iteachat-65567",
+    "storage_bucket": "iteachat-65567.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361842873439:android:adc3241804e63f06",
+        "android_client_info": {
+          "package_name": "com.example.dimuch.companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361842873439-qb92rq77acgtar5mh08gvo5ieia6e856.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dimuch.companion",
+            "certificate_hash": "c66cdabf3bf403d13852d1a0b417ebb165b772b3"
+          }
+        },
+        {
+          "client_id": "361842873439-8v70cgell99pnl1q95jdjj9s78ngug9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUfrXiselQcdCdzmnp2qlTw2FvRArSDFw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361842873439-8v70cgell99pnl1q95jdjj9s78ngug9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
