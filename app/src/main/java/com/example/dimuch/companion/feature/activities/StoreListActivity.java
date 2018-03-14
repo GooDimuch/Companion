@@ -65,4 +65,14 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
     rvAdapterForStoreList.updateData(
         storeListActivityPresenter.getListYouAreLookingFor(s.toString()));
   }
+
+  @Override protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putString("etSearch", String.valueOf(etSearch.getText()));
+  }
+
+  @Override protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+    etSearch.setText(savedInstanceState.getString("etSearch"));
+  }
 }
