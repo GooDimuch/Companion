@@ -1,5 +1,7 @@
 package com.example.dimuch.companion.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Dimuch on 07.12.2017.
  */
@@ -7,18 +9,21 @@ package com.example.dimuch.companion.data.model;
 public class Store {
 
   private int mLogoStore;
-  private String mNameStore;
-  private double mRatingStore;
-  private String mTypeStore;
+  @SerializedName("name") private String name;
+  @SerializedName("rating") private double mRatingStore;
+  @SerializedName("type") private String mTypeStore;
   private String mAddressStore;
-  private String mWebSiteStore;
+  @SerializedName("website") private String mWebSiteStore;
   private String mPhoneStore;
-  private String mWorkScheduleStore;
+  @SerializedName("workSchedule") private String mWorkScheduleStore;
+
+  public Store() {
+  }
 
   public Store(int logoStore, String nameStore, double ratingStore, String typeStore,
       String addressStore, String webSiteStore, String phoneStore, String workScheduleStore) {
     this.mLogoStore = logoStore;
-    this.mNameStore = nameStore;
+    this.name = nameStore;
     this.mRatingStore = ratingStore;
     this.mTypeStore = typeStore;
     this.mAddressStore = addressStore;
@@ -28,7 +33,7 @@ public class Store {
   }
 
   public Store(String nameStore) {
-    this.mNameStore = nameStore;
+    this.name = nameStore;
   }
 
   public int getLogoStore() {
@@ -40,11 +45,11 @@ public class Store {
   }
 
   public String getNameStore() {
-    return mNameStore;
+    return name;
   }
 
-  public void setNameStore(String mNameStore) {
-    this.mNameStore = mNameStore;
+  public void setNameStore(String name) {
+    this.name = name;
   }
 
   public float getRatingStore() {
