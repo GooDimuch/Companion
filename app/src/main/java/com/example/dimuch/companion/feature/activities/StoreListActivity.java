@@ -13,6 +13,7 @@ import butterknife.OnTextChanged;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
+import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.feature.adapters.RVAdapterForStoreList;
 import com.example.dimuch.companion.feature.presenters.StoreListActivityPresenter;
 import com.example.dimuch.companion.feature.views.IStoreListActivityView;
@@ -47,12 +48,12 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
       showToast("pos = " + position);
 
       Intent intent = new Intent(this, StoreActivity.class);
-      intent.putExtra("item_position", rvAdapterForStoreList.getTVStore(position));
+      intent.putExtra("item_position", rvAdapterForStoreList.getIdStore(position));
       startActivity(intent);
     });
   }
 
-  @Override public void updateDataInList(List<String> storeNameList) {
+  @Override public void updateDataInList(List<Store> storeNameList) {
     rvAdapterForStoreList.updateData(storeNameList);
   }
 

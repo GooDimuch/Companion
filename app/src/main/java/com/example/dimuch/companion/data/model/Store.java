@@ -6,6 +6,7 @@ package com.example.dimuch.companion.data.model;
 
 public class Store {
 
+  private int mIdStore;
   private int mLogoStore;
   private String mNameStore;
   private double mRatingStore;
@@ -15,8 +16,12 @@ public class Store {
   private String mPhoneStore;
   private String mWorkScheduleStore;
 
-  public Store(int logoStore, String nameStore, double ratingStore, String typeStore,
+  public Store() {
+  }
+
+  public Store(int idStore, int logoStore, String nameStore, double ratingStore, String typeStore,
       String addressStore, String webSiteStore, String phoneStore, String workScheduleStore) {
+    this.mIdStore = idStore;
     this.mLogoStore = logoStore;
     this.mNameStore = nameStore;
     this.mRatingStore = ratingStore;
@@ -27,8 +32,12 @@ public class Store {
     this.mWorkScheduleStore = workScheduleStore;
   }
 
-  public Store(String nameStore) {
-    this.mNameStore = nameStore;
+  public int getId() {
+    return mIdStore;
+  }
+
+  public void setId(int mId) {
+    this.mIdStore = mId;
   }
 
   public int getLogoStore() {
@@ -93,5 +102,9 @@ public class Store {
 
   public void setWorkScheduleStore(String mWorkScheduleStore) {
     this.mWorkScheduleStore = mWorkScheduleStore;
+  }
+
+  @Override public String toString() {
+    return getNameStore();
   }
 }

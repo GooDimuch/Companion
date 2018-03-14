@@ -8,13 +8,14 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.dimuch.companion.R;
+import com.example.dimuch.companion.data.model.Store;
 import java.util.ArrayList;
 import java.util.List;
 import timber.log.Timber;
 
 public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStoreList.ViewHolder> {
 
-  private List<String> mStoreList;
+  private List<Store> mStoreList;
 
   public RVAdapterForStoreList() {
     mStoreList = new ArrayList<>();
@@ -38,7 +39,7 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.tvStore.setText(mStoreList.get(position));
+    holder.tvStore.setText(mStoreList.get(position).getNameStore());
   }
 
   @Override public int getItemCount() {
@@ -49,11 +50,11 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
     super.onAttachedToRecyclerView(recyclerView);
   }
 
-  public String getTVStore (int position) {
-    return mStoreList.get(position);
+  public int getIdStore(int position) {
+    return mStoreList.get(position).getId();
   }
 
-  public void updateData(List<String> viewModels) {
+  public void updateData(List<Store> viewModels) {
     mStoreList.clear();
     mStoreList.addAll(viewModels);
     notifyDataSetChanged();

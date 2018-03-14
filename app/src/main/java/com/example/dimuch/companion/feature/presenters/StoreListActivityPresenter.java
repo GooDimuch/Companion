@@ -4,12 +4,13 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.data.DataManager;
-import com.example.dimuch.companion.data.model.StoreName;
+import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.feature.views.IStoreListActivityView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Observable;
+import timber.log.Timber;
 
 /**
  * Created by Dimuch on 27.11.2017.
@@ -19,7 +20,7 @@ import rx.Observable;
     extends MvpPresenter<IStoreListActivityView> {
 
   @Inject DataManager mDataManager;
-  private List<String> mStoreList;
+  private List<Store> mStoreList;
 
   public StoreListActivityPresenter() {
   }
@@ -32,22 +33,21 @@ import rx.Observable;
     getViewState().updateDataInList(downloadDataForList());
   }
 
-  private List<String> downloadDataForList() {
+  private List<Store> downloadDataForList() {
     if (!mStoreList.isEmpty()) return mStoreList;
 
-    mDataManager.getStoreNameList()
-        .flatMap(Observable::from)
-        .map(StoreName::getmStoreName)
-        .subscribe(mStoreList::add);
+    mDataManager.getStoreList().subscribe(mStoreList::addAll);
+    Timber.wtf(mStoreList.toString());
 
     return mStoreList;
   }
 
-  public List<String> getListYouAreLookingFor(String searchedCombination) {
-    List<String> list = new ArrayList<>();
+  public List<Store> getListYouAreLookingFor(String searchedCombination) {
+    List<Store> list = new ArrayList<>();
 
     Observable.from(mStoreList)
-        .filter(s -> s.toLowerCase().contains(searchedCombination.toLowerCase()))
+        .filter(
+            store -> store.getNameStore().toLowerCase().contains(searchedCombination.toLowerCase()))
         .subscribe(list::add);
 
     return searchedCombination.isEmpty() ? mStoreList : list;
