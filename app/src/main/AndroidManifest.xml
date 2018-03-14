@@ -11,23 +11,31 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity android:name=".feature.activities.MainActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+      <!--<intent-filter>-->
+      <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
+      <!--<category android:name="android.intent.category.LAUNCHER" />-->
+      <!--</intent-filter>-->
     </activity>
     <activity
         android:name=".feature.activities.MapActivity"
-        android:parentActivityName=".feature.activities.MainActivity">
-    </activity>
+        android:parentActivityName=".feature.activities.MainActivity"></activity>
     <activity
         android:name=".feature.activities.StoreListActivity"
-        android:parentActivityName=".feature.activities.MainActivity">
-    </activity>
+        android:parentActivityName=".feature.activities.MainActivity"></activity>
     <activity
         android:name=".feature.activities.StoreActivity"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
+        android:name=".feature.splash.SplashActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:label="@string/title_activity_splash"
+        android:theme="@style/FullscreenTheme">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
     </activity>
   </application>
 
