@@ -11,11 +11,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnTextChanged;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.feature.adapters.RVAdapterForStoreList;
+import com.example.dimuch.companion.feature.presenters.StoreListActivityPresenter;
 import com.example.dimuch.companion.feature.views.IStoreListActivityView;
 import com.example.dimuch.companion.utils.ItemClickSupport;
-import com.example.dimuch.companion.utils.StoreListHelper;
+import java.util.List;
 
 /**
  * Created by Dimuch on 27.11.2017.
@@ -26,7 +28,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
   @BindView(R.id.etSearch) EditText etSearch;
   @BindView(R.id.rvStoreList) RecyclerView rvStoreList;
 
-  private StoreListHelper mStoreListHelper;
+  @InjectPresenter StoreListActivityPresenter storeListActivityPresenter;
   private RVAdapterForStoreList rvAdapterForStoreList;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,10 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
     ButterKnife.bind(this);
     setTitle(R.string.store_list);
 
-    mStoreListHelper = new StoreListHelper();
-
     LinearLayoutManager layoutManagerForStores =
         new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
     rvStoreList.setLayoutManager(layoutManagerForStores);
-    rvAdapterForStoreList = new RVAdapterForStoreList(mStoreListHelper.getmStoreList());
+    rvAdapterForStoreList = new RVAdapterForStoreList();
     rvStoreList.setAdapter(rvAdapterForStoreList);
 
     ItemClickSupport.addTo(rvStoreList).setOnItemClickListener((recyclerView, position, v) -> {
@@ -52,12 +52,17 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
     });
   }
 
+  @Override public void updateDataInList(List<String> storeNameList) {
+    rvAdapterForStoreList.updateData(storeNameList);
+  }
+
   @Override public void showToast(String sToastMessage) {
     Toast.makeText(getApplicationContext(), sToastMessage, Toast.LENGTH_SHORT).show();
   }
 
   @OnTextChanged(R.id.etSearch) public void etSearch(Editable s) {
     showToast(s + " butter");
-    rvAdapterForStoreList.updateData(mStoreListHelper.getListYouAreLookingFor(s.toString()));
+    rvAdapterForStoreList.updateData(
+        storeListActivityPresenter.getListYouAreLookingFor(s.toString()));
   }
 }

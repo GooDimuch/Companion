@@ -15,8 +15,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
+import com.example.dimuch.companion.feature.presenters.StoreActivityPresenter;
 import com.example.dimuch.companion.feature.views.IStoreActivityView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +36,8 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
   @BindView(R.id.tvWebSite) TextView tvWebSite;
   @BindView(R.id.tvPhone) TextView tvPhone;
   @BindView(R.id.tvWorkSchedule) TextView tvWorkSchedule;
+
+  @InjectPresenter StoreActivityPresenter storeActivityPresenter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

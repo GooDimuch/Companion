@@ -8,6 +8,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.dimuch.companion.R;
+import java.util.ArrayList;
 import java.util.List;
 import timber.log.Timber;
 
@@ -15,8 +16,8 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
 
   private List<String> mStoreList;
 
-  public RVAdapterForStoreList(List<String> storeList) {
-    mStoreList = storeList;
+  public RVAdapterForStoreList() {
+    mStoreList = new ArrayList<>();
     Timber.d("adapter");
   }
 
@@ -51,6 +52,7 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
   public String getTVStore (int position) {
     return mStoreList.get(position);
   }
+
   public void updateData(List<String> viewModels) {
     mStoreList.clear();
     mStoreList.addAll(viewModels);
