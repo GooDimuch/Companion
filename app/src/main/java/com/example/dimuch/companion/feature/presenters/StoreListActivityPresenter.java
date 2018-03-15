@@ -37,7 +37,6 @@ import timber.log.Timber;
     if (!mStoreList.isEmpty()) return mStoreList;
 
     mDataManager.getStoreList().subscribe(mStoreList::addAll);
-    Timber.wtf(mStoreList.toString());
 
     return mStoreList;
   }

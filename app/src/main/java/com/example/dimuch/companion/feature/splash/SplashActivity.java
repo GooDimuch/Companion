@@ -28,11 +28,11 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     //Timber.e("sotore " + database.getReference().child("message").ge));m
     myRef.addValueEventListener(new ValueEventListener() {
       @Override public void onDataChange(DataSnapshot dataSnapshot) {
-        Timber.e("sotore" + dataSnapshot.getChildrenCount());
-        Timber.e("sotore" + dataSnapshot.getValue(true));
+        //Timber.e("sotore" + dataSnapshot.getChildrenCount());
+        //Timber.e("sotore" + dataSnapshot.getValue(true));
         //Timber.e("sotore" + dataSnapshot.getValue(Store.class).getAddressStore());
-        Timber.e("sotore" + dataSnapshot.child("StoreList").child("store").getValue(Store.class).toString());
-
+        for (DataSnapshot ds : dataSnapshot.child("StoreList").getChildren())
+          Timber.e("store" + ds.getValue(Store.class));
       }
 
       @Override public void onCancelled(DatabaseError databaseError) {
