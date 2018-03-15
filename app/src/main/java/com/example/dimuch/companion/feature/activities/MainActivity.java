@@ -9,7 +9,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
+import com.example.dimuch.companion.feature.presenters.MainActivityPresenter;
 import com.example.dimuch.companion.feature.views.IMainActivityView;
 
 public class MainActivity extends MvpAppCompatActivity implements IMainActivityView {
@@ -17,6 +19,8 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
   @BindView(R.id.bMap) Button bMap;
   @BindView(R.id.bStoreList) Button bStoreList;
   @BindView(R.id.bForFuture) Button bForFuture;
+
+  @InjectPresenter MainActivityPresenter mainActivityPresenter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

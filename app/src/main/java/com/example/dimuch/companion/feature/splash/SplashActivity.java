@@ -6,12 +6,13 @@ import android.support.v7.app.ActionBar;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.base.BaseActivity;
+import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.feature.activities.MainActivity;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import timber.log.Timber;
 
 public class SplashActivity extends BaseActivity implements ISplashActivityView {
@@ -22,31 +23,22 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     super.onCreate(savedInstanceState);
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference myRef = database.getReference();
     //myRef.setValue("Hello, World!");
     //Timber.e("sotore " + database.getReference().child("message").ge));m
-   myRef.child("message").addChildEventListener(new ChildEventListener() {
-     @Override public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-       Timber.e("sotore" + dataSnapshot.getValue(String.class));
-     }
+    myRef.addValueEventListener(new ValueEventListener() {
+      @Override public void onDataChange(DataSnapshot dataSnapshot) {
+        Timber.e("sotore" + dataSnapshot.getChildrenCount());
+        Timber.e("sotore" + dataSnapshot.getValue(true));
+        //Timber.e("sotore" + dataSnapshot.getValue(Store.class).getAddressStore());
+        Timber.e("sotore" + dataSnapshot.child("StoreList").child("store").getValue(Store.class).toString());r
 
-     @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-       Timber.e("sotore" + dataSnapshot.getValue(String.class));
+      }
 
-     }
-
-     @Override public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-     }
-
-     @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-     }
-
-     @Override public void onCancelled(DatabaseError databaseError) {
-
-     }
-   });
+      @Override public void onCancelled(DatabaseError databaseError) {
+        Timber.e("sotore" + databaseError.getMessage());
+      }
+    });
   }
 
   @Override public void setUpUI() {

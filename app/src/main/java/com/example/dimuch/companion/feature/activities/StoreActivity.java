@@ -15,13 +15,16 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
+import com.example.dimuch.companion.feature.presenters.StoreActivityPresenter;
 import com.example.dimuch.companion.feature.views.IStoreActivityView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class StoreActivity extends AppCompatActivity implements IStoreActivityView {
+public class StoreActivity extends MvpAppCompatActivity implements IStoreActivityView {
 
   @BindView(R.id.fab) FloatingActionButton fab;
   @BindView(R.id.toolbar) Toolbar toolbar;
@@ -35,64 +38,21 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
   @BindView(R.id.tvPhone) TextView tvPhone;
   @BindView(R.id.tvWorkSchedule) TextView tvWorkSchedule;
 
+  @InjectPresenter StoreActivityPresenter storeActivityPresenter;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_store);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
 
-    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
-
-
-    Store tempStore =
-        new Store(R.drawable.store, getIntent().getStringExtra("item_position"), 7 / 2.0,
-            "Магазин электроники", "вулиця Ярославська, 57, Київ, 02000", "rozetka.com.ua",
-            "044 503 8080", "Открыто:  10–21\n"
-        + "понедельник\t10–21\n"
-        + "вторник\t10–21\n"
-        + "среда\t10–21\n"
-        + "четверг\t10–21\n"
-        + "пятница\t10–21\n"
-        + "суббота\t10–21\n"
-        + "воскресенье\t10–18\n");
-
-    setLogoStore(tempStore.getLogoStore());
-    setNameStore(tempStore.getNameStore());
-    setRatingStore(tempStore.getRatingStore());
-    setTypeStore(tempStore.getTypeStore());
-    setAddressStore(tempStore.getAddressStore());
-    setWebSiteStore(tempStore.getWebSiteStore());
-    setPhoneStore(tempStore.getPhoneStore());
-    setWorkScheduleStore(tempStore.getWorkScheduleStore());
+    storeActivityPresenter.transmitStoreId(getIntent().getIntExtra("item_position", 0));
   }
 
   @OnClick(R.id.fab) public void onClickFab(View view) {
     Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
         .setAction("Action", null)
         .show();
-  }
-
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_store, menu);
-    return true;
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
-  @Override public void showToast(String sToastMessage) {
-    Toast.makeText(getApplicationContext(), sToastMessage, Toast.LENGTH_SHORT).show();
   }
 
   @Override public void setLogoStore(int iLogoStore) {
@@ -127,5 +87,28 @@ public class StoreActivity extends AppCompatActivity implements IStoreActivityVi
 
   @Override public void setWorkScheduleStore(String sWorkScheduleStore) {
     tvWorkSchedule.setText(sWorkScheduleStore);
+  }
+
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_store, menu);
+    return true;
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings) {
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  @Override public void showToast(String sToastMessage) {
+    Toast.makeText(getApplicationContext(), sToastMessage, Toast.LENGTH_SHORT).show();
   }
 }
