@@ -6,8 +6,9 @@ import android.support.v7.app.ActionBar;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.base.BaseActivity;
+import com.example.dimuch.companion.data.model.ShoppingCenter;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.googleLogin.GoogleLoginHiddenActivity;
+import com.example.dimuch.companion.feature.activities.MainActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +29,13 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     //Timber.e("sotore " + database.getReference().child("message").ge));m
     myRef.addValueEventListener(new ValueEventListener() {
       @Override public void onDataChange(DataSnapshot dataSnapshot) {
-        //Timber.e("sotore" + dataSnapshot.getChildrenCount());
-        //Timber.e("sotore" + dataSnapshot.getValue(true));
-        //Timber.e("sotore" + dataSnapshot.getValue(Store.class).getAddressStore());
-        for (DataSnapshot ds : dataSnapshot.child("StoreList").getChildren())
+
+        //mPresenter.firebaseRepository.setShoppingCenter(
+        //    dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class));
+
+        //Timber.wtf(dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class).toString());
+
+        for (DataSnapshot ds : dataSnapshot.child("ShoppingCenter").child("stores").getChildren())
           Timber.e("store" + ds.getValue(Store.class));
       }
 
@@ -53,11 +57,16 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     }
   }
 
+  //@Override public void moveToNextActivity() {
+  //  Intent intent = new Intent(getApplicationContext(), GoogleLoginHiddenActivity.class);
+  //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+  //  intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID,
+  //      "923835861335-safjg18e61qaaqlhnn37vo7ed06decdk.apps.googleusercontent.com");
+  //  startActivity(intent);
+  //}
+
   @Override public void moveToNextActivity() {
-    Intent intent = new Intent(getApplicationContext(), GoogleLoginHiddenActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID,
-        "923835861335-safjg18e61qaaqlhnn37vo7ed06decdk.apps.googleusercontent.com");
+    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(intent);
   }
 }

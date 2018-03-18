@@ -1,6 +1,6 @@
 package com.example.dimuch.companion.data.remote;
 
-import com.example.dimuch.companion.data.model.AllData;
+import com.example.dimuch.companion.data.model.FirebaseRepository;
 import com.example.dimuch.companion.data.model.Store;
 import java.util.List;
 import rx.Observable;
@@ -11,13 +11,13 @@ import rx.Observable;
 
 public class RestApi {
 
-  private AllData mAllData;
+  private FirebaseRepository mFirebaseRepository;
 
-  public RestApi(AllData allData) {
-    mAllData = allData;
+  public RestApi(FirebaseRepository firebaseRepository) {
+    mFirebaseRepository = firebaseRepository;
   }
 
   public Observable<List<Store>> getStoreList() {
-    return mAllData.getStoreList();
+    return mFirebaseRepository.getStoreList();
   }
 }

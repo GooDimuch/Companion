@@ -42,7 +42,7 @@ import javax.inject.Inject;
     getViewState().setNameStore(mStoreList.get(idStore).getName());
     getViewState().setRatingStore((float) mStoreList.get(idStore).getRating());
     getViewState().setTypeStore(mStoreList.get(idStore).getType());
-    getViewState().setAddressStore(mStoreList.get(idStore).getAdress());
+    getViewState().setAddressStore(mStoreList.get(idStore).getAddress());
     getViewState().setWebSiteStore(mStoreList.get(idStore).getWebsite());
     getViewState().setPhoneStore(mStoreList.get(idStore).getPhone());
     getViewState().setWorkScheduleStore(mStoreList.get(idStore).getWorkSchedule());

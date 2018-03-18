@@ -9,13 +9,23 @@ import rx.Observable;
  * Created by Dimuch on 07.12.2017.
  */
 
-public class AllData {
+public class FirebaseRepository {
 
-  public AllData() {
+  private ShoppingCenter shoppingCenter;
+
+  public FirebaseRepository() {
   }
 
   public Observable<List<Store>> getStoreList() {
-    return Observable.just(createStoreList());
+    return Observable.just(getShoppingCenter().getStores());
+  }
+
+  public ShoppingCenter getShoppingCenter() {
+    return shoppingCenter;
+  }
+
+  public void setShoppingCenter(ShoppingCenter shoppingCenter) {
+    this.shoppingCenter = shoppingCenter;
   }
 
   private List<Store> createStoreList() {
@@ -27,7 +37,7 @@ public class AllData {
       store.setLogoStore(R.drawable.store);
       store.setRating(7 / 2.0);
       store.setType("Магазин электроники");
-      store.setAdress("вулиця Ярославська, 57, Київ, 02000");
+      store.setAddress("вулиця Ярославська, 57, Київ, 02000");
       store.setWebsite("rozetka.com.ua");
       store.setPhone("044 503 8080");
       store.setWorkSchedule("Открыто:  10–21\n"
