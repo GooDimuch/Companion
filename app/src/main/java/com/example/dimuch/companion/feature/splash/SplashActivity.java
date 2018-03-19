@@ -30,10 +30,10 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     myRef.addValueEventListener(new ValueEventListener() {
       @Override public void onDataChange(DataSnapshot dataSnapshot) {
 
-        //mPresenter.firebaseRepository.setShoppingCenter(
-        //    dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class));
+        mPresenter.firebaseRepository.setShoppingCenter(
+            dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class));
 
-        //Timber.wtf(dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class).toString());
+        Timber.wtf(dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class).toString());
 
         for (DataSnapshot ds : dataSnapshot.child("ShoppingCenter").child("stores").getChildren())
           Timber.e("store" + ds.getValue(Store.class));

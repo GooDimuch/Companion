@@ -1,5 +1,6 @@
 package com.example.dimuch.companion.data.model;
 
+import com.example.dimuch.companion.R;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import lombok.ToString;
  */
 @ToString @NoArgsConstructor @AllArgsConstructor public class Store {
   @Getter @Setter private int id;
-  @Getter @Setter private int logoStore;
+  @Getter @Setter private int logoStore = R.drawable.store;
   @Getter @Setter @SerializedName("name") private String name;
   @Getter @Setter @SerializedName("rating") private double rating;
   @Getter @Setter @SerializedName("type") private String type;

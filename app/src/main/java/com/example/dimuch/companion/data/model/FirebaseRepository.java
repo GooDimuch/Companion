@@ -14,10 +14,11 @@ public class FirebaseRepository {
   private ShoppingCenter shoppingCenter;
 
   public FirebaseRepository() {
+    shoppingCenter = new ShoppingCenter("", 0, "", new ArrayList<>());
   }
 
   public Observable<List<Store>> getStoreList() {
-    return Observable.just(getShoppingCenter().getStores());
+    return Observable.just(shoppingCenter.getStores());
   }
 
   public ShoppingCenter getShoppingCenter() {

@@ -48,7 +48,8 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
       showToast("pos = " + position);
 
       Intent intent = new Intent(this, StoreActivity.class);
-      intent.putExtra("item_position", rvAdapterForStoreList.getIdStore(position));
+      //intent.putExtra("item_position", rvAdapterForStoreList.getIdStore(position));
+      intent.putExtra("item_position", position);
       startActivity(intent);
     });
   }
