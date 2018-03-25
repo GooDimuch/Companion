@@ -14,8 +14,8 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    ButterKnife.bind(this);
     setUpUI();
+    ButterKnife.bind(this);
   }
 
   public abstract void setUpUI();

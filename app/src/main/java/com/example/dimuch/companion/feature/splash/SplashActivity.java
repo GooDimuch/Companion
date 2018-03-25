@@ -23,6 +23,11 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     setContentView(R.layout.activity_splash);
     super.onCreate(savedInstanceState);
 
+    loadStoresList();
+    loadProfile();
+  }
+
+  private void loadStoresList() {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     //myRef.setValue("Hello, World!");
@@ -43,6 +48,10 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
         Timber.e("sotore" + databaseError.getMessage());
       }
     });
+  }
+
+  private void loadProfile() {
+
   }
 
   @Override public void setUpUI() {

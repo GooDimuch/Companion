@@ -1,6 +1,7 @@
 package com.example.dimuch.companion.di.components;
 
 import com.example.dimuch.companion.di.modules.AppModule;
+import com.example.dimuch.companion.feature.googleLogin.SocialUser;
 import com.example.dimuch.companion.feature.main.MainActivityPresenter;
 import com.example.dimuch.companion.feature.profile.ProfileActivityPresenter;
 import com.example.dimuch.companion.feature.store.StoreActivityPresenter;
@@ -18,7 +19,9 @@ import javax.inject.Singleton;
 
   void inject(SplashActivityPresenter mPresenter);
 
-  void inject(StoreListActivityPresenter storeListActivityPresenter);
+  void inject(StoreListActivityPresenter mPresenter);
 
-  void inject(StoreActivityPresenter storeActivityPresenter);
+  void inject(StoreActivityPresenter mPresenter);
+
+  void inject(SocialUser mPresenter);
 }
