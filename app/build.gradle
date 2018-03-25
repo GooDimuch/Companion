@@ -77,6 +77,17 @@ dependencies {
 
 
   compile 'com.google.android.gms:play-services-auth:11.8.0'
+
+  //indooreAtlas
+  compile 'com.indooratlas.android:indooratlas-android-sdk:2.7.0@aar'
+
+  //Picasso
+  implementation 'com.squareup.picasso:picasso:2.71828'
+}
+repositories {
+  maven {
+    url "http://indooratlas-ltd.bintray.com/mvn-public"
+  }
 }
 
 apply plugin: 'com.google.gms.google-services'

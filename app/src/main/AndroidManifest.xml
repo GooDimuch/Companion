@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dimuch.companion">
 
+  <uses-feature android:name="android.hardware.sensor.accelerometer"
+      android:required="true" />
+  <uses-feature android:name="android.hardware.sensor.compass"
+      android:required="true" />
+  <uses-feature android:name="android.hardware.sensor.gyroscope"
+      android:required="true" />
+  <uses-feature android:name="android.hardware.wifi"
+      android:required="true" />
+
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
   <application
       android:name=".App"
       android:allowBackup="true"
@@ -10,6 +22,13 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <meta-data
+        android:name="com.indooratlas.android.sdk.API_KEY"
+        android:value="041a555e-5ee9-4231-aecf-a282b2d49392"/>
+    <meta-data
+        android:name="com.indooratlas.android.sdk.API_SECRET"
+        android:value="S+fOzNKnYn3WCzGkd53AT6j2Z82CIGxU3frxHJgrDDY97fKNW9AeYu3axAAF4HWbtEdZYkeeVhrRQCoZwOml+MA9EWbJiWdAm9GTeIt6kEwj+WArk8PiIE7WgBo1yQ=="/>
+
     <activity android:name=".feature.activities.MainActivity">
       <!--<intent-filter>-->
       <!--<action android:name="android.intent.action.MAIN" />-->
