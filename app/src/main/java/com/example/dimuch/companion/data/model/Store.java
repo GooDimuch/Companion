@@ -13,6 +13,7 @@ import lombok.ToString;
  */
 @ToString @NoArgsConstructor @AllArgsConstructor public class Store {
   @Getter @Setter private int id;
+  @Getter @Setter private boolean favorite;
   @Getter @Setter private int logoStore = R.drawable.store;
   @Getter @Setter @SerializedName("name") private String name;
   @Getter @Setter @SerializedName("rating") private double rating;

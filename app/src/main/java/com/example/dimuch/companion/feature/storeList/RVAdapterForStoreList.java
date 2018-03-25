@@ -4,9 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
 import java.util.ArrayList;
@@ -22,13 +24,23 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
     Timber.d("adapter");
   }
 
-  static class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tvStore) TextView tvStore;
+    @BindView(R.id.ivFavorite) ImageView ivFavorite;
 
     ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
+    }
+
+    @OnClick(R.id.ivFavorite) public void onClickFavorite(){
+      if (mStoreList.get(getLayoutPosition()).isFavorite())
+        mStoreList.get(getLayoutPosition()).setFavorite(false);
+      else
+        mStoreList.get(getLayoutPosition()).setFavorite(true);
+
+      notifyDataSetChanged();
     }
   }
 
@@ -40,6 +52,10 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     holder.tvStore.setText(mStoreList.get(position).getName());
+    if (mStoreList.get(position).isFavorite())
+      holder.ivFavorite.setImageResource(R.mipmap.ic_star_true);
+    else
+      holder.ivFavorite.setImageResource(R.mipmap.ic_star_false);
   }
 
   @Override public int getItemCount() {
