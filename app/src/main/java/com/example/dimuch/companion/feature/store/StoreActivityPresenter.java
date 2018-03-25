@@ -1,11 +1,10 @@
-package com.example.dimuch.companion.feature.presenters;
+package com.example.dimuch.companion.feature.store;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.data.DataManager;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.views.IStoreActivityView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;

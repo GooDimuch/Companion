@@ -1,8 +1,7 @@
-package com.example.dimuch.companion.feature.presenters;
+package com.example.dimuch.companion.feature.map;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.example.dimuch.companion.feature.views.IMapActivityView;
 
 /**
  * Created by Dimuch on 27.11.2017.

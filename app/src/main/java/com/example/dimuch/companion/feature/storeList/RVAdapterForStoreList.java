@@ -1,4 +1,4 @@
-package com.example.dimuch.companion.feature.adapters;
+package com.example.dimuch.companion.feature.storeList;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

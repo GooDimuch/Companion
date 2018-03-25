@@ -1,4 +1,4 @@
-package com.example.dimuch.companion.feature.activities;
+package com.example.dimuch.companion.feature.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import butterknife.OnClick;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
-import com.example.dimuch.companion.feature.presenters.MainActivityPresenter;
-import com.example.dimuch.companion.feature.views.IMainActivityView;
+import com.example.dimuch.companion.feature.map.MapActivity;
+import com.example.dimuch.companion.feature.storeList.StoreListActivity;
 
 public class MainActivity extends MvpAppCompatActivity implements IMainActivityView {
 

@@ -1,4 +1,4 @@
-package com.example.dimuch.companion.feature.activities;
+package com.example.dimuch.companion.feature.storeList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.adapters.RVAdapterForStoreList;
-import com.example.dimuch.companion.feature.presenters.StoreListActivityPresenter;
-import com.example.dimuch.companion.feature.views.IStoreListActivityView;
+import com.example.dimuch.companion.feature.store.StoreActivity;
 import com.example.dimuch.companion.utils.ItemClickSupport;
 import java.util.List;
 

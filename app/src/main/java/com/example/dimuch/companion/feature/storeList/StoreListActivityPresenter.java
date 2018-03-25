@@ -1,10 +1,9 @@
-package com.example.dimuch.companion.feature.presenters;
+package com.example.dimuch.companion.feature.storeList;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.base.BasePresenter;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.views.IStoreListActivityView;
 import com.example.dimuch.companion.utils.ThreadSchedulers;
 import java.util.ArrayList;
 import java.util.List;
