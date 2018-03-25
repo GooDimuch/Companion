@@ -10,37 +10,41 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".feature.main.MainActivity">
-      <!--<intent-filter>-->
-      <!--<action android:name="android.intent.action.MAIN" />-->
-
-      <!--<category android:name="android.intent.category.LAUNCHER" />-->
-      <!--</intent-filter>-->
-    </activity>
-    <activity
-        android:name=".feature.map.MapActivity"
-        android:parentActivityName=".feature.main.MainActivity"></activity>
-    <activity
-        android:name=".feature.storeList.StoreListActivity"
-        android:parentActivityName=".feature.main.MainActivity"></activity>
-    <activity
-        android:name=".feature.store.StoreActivity"
-        android:theme="@style/AppTheme.NoActionBar"></activity>
-    <activity
-        android:name=".feature.googleLogin.GoogleLoginHiddenActivity"
-        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        android:theme="@style/Theme.AppCompat.Translucent" />
     <activity
         android:name=".feature.splash.SplashActivity"
         android:configChanges="orientation|keyboardHidden|screenSize"
         android:label="@string/title_activity_splash"
         android:theme="@style/FullscreenTheme">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <action android:name="android.intent.action.MAIN"/>
 
-        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity android:name=".feature.main.MainActivity">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
+    </activity>
+    <activity
+        android:name=".feature.map.MapActivity"
+        android:parentActivityName=".feature.main.MainActivity"/>
+    <activity
+        android:name=".feature.storeList.StoreListActivity"
+        android:parentActivityName=".feature.main.MainActivity"/>
+    <activity
+        android:name=".feature.store.StoreActivity"
+        android:theme="@style/AppTheme.NoActionBar"/>
+    <activity
+        android:name=".feature.googleLogin.GoogleLoginHiddenActivity"
+        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        android:theme="@style/Theme.AppCompat.Translucent"/>
+    <activity android:name=".feature.profile.ProfileActivity"/>
+
   </application>
 
 </manifest>
