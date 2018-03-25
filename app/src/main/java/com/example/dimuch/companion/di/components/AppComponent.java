@@ -1,9 +1,9 @@
 package com.example.dimuch.companion.di.components;
 
 import com.example.dimuch.companion.di.modules.AppModule;
-import com.example.dimuch.companion.feature.presenters.MainActivityPresenter;
-import com.example.dimuch.companion.feature.presenters.StoreActivityPresenter;
-import com.example.dimuch.companion.feature.presenters.StoreListActivityPresenter;
+import com.example.dimuch.companion.feature.main.MainActivityPresenter;
+import com.example.dimuch.companion.feature.store.StoreActivityPresenter;
+import com.example.dimuch.companion.feature.storeList.StoreListActivityPresenter;
 import com.example.dimuch.companion.feature.splash.SplashActivityPresenter;
 import dagger.Component;
 import javax.inject.Singleton;

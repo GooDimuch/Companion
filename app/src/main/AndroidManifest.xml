@@ -10,7 +10,7 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".feature.activities.MainActivity">
+    <activity android:name=".feature.main.MainActivity">
       <!--<intent-filter>-->
       <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -18,13 +18,13 @@
       <!--</intent-filter>-->
     </activity>
     <activity
-        android:name=".feature.activities.MapActivity"
-        android:parentActivityName=".feature.activities.MainActivity"></activity>
+        android:name=".feature.map.MapActivity"
+        android:parentActivityName=".feature.main.MainActivity"></activity>
     <activity
-        android:name=".feature.activities.StoreListActivity"
-        android:parentActivityName=".feature.activities.MainActivity"></activity>
+        android:name=".feature.storeList.StoreListActivity"
+        android:parentActivityName=".feature.main.MainActivity"></activity>
     <activity
-        android:name=".feature.activities.StoreActivity"
+        android:name=".feature.store.StoreActivity"
         android:theme="@style/AppTheme.NoActionBar"></activity>
     <activity
         android:name=".feature.googleLogin.GoogleLoginHiddenActivity"

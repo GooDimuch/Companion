@@ -8,7 +8,7 @@ import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.base.BaseActivity;
 import com.example.dimuch.companion.data.model.ShoppingCenter;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.activities.MainActivity;
+import com.example.dimuch.companion.feature.main.MainActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
