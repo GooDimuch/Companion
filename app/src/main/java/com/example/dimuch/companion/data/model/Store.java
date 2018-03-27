@@ -4,7 +4,6 @@ import com.example.dimuch.companion.R;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -12,7 +11,8 @@ import lombok.ToString;
  * Created by Dimuch on 07.12.2017.
  */
 @ToString @AllArgsConstructor public class Store {
-  private static int count = 0;
+  private static int countStore = 0;
+  public static int countFavorite = 0;
   @Getter @Setter private int id;
   @Getter @Setter private boolean favorite;
   @Getter @Setter private int logoStore = R.drawable.store;
@@ -25,7 +25,7 @@ import lombok.ToString;
   @Getter @Setter @SerializedName("workSchedule") private String workSchedule;
 
   public Store() {
-    id = count;
-    count++;
+    id = countStore;
+    countStore++;
   }
 }

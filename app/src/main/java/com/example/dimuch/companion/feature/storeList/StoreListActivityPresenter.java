@@ -5,7 +5,9 @@ import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.base.BasePresenter;
 import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.utils.ThreadSchedulers;
+import com.example.dimuch.companion.utils.Utils;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import rx.Observable;
 import rx.Subscription;
@@ -28,18 +30,18 @@ import rx.Subscription;
     super.onFirstViewAttach();
 
     mStoreList = new ArrayList<>();
-    currentStoreList = new ArrayList<>();
+    currentStoreList = mStoreList;
     updateDataInList();
     //getViewState().updateDataInList(downloadDataForList());
   }
 
   private void updateDataInList() {
-    if (!mStoreList.isEmpty()) getViewState().updateDataInList(mStoreList);
+    if (!mStoreList.isEmpty()) getViewState().updateDataInList(getCurrentStoreList());
     Subscription subscription = mDataManager.getStoreList()
         .compose(ThreadSchedulers.applySchedulers()) // тут просто распаралеливаем задачи по потокам
         .subscribe(stores -> {
           mStoreList.addAll(stores);
-          getViewState().updateDataInList(stores);
+          getViewState().updateDataInList(getCurrentStoreList());
         });
     addToUnsubscription(subscription);
   }
@@ -60,10 +62,11 @@ import rx.Subscription;
         .subscribe(list::add);
 
     currentStoreList = searchedCombination.isEmpty() ? mStoreList : list;
-    return currentStoreList;
+    return getCurrentStoreList();
   }
 
   public List<Store> getCurrentStoreList() {
+    Utils.sortList(currentStoreList, Store.countFavorite);
     return currentStoreList;
   }
 }
