@@ -27,7 +27,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
   @BindView(R.id.etSearch) EditText etSearch;
   @BindView(R.id.rvStoreList) RecyclerView rvStoreList;
 
-  @InjectPresenter StoreListActivityPresenter storeListActivityPresenter;
+  @InjectPresenter StoreListActivityPresenter mPresenter;
   private RVAdapterForStoreList rvAdapterForStoreList;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
 
       Intent intent = new Intent(this, StoreActivity.class);
       //intent.putExtra("item_position", rvAdapterForStoreList.getIdStore(position));
-      intent.putExtra("item_position", position);
+      intent.putExtra("item_position", mPresenter.getCurrentStoreList().get(position).getId());
       startActivity(intent);
     });
   }
@@ -62,8 +62,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
 
   @OnTextChanged(R.id.etSearch) public void etSearch(Editable s) {
     showToast(s + " butter");
-    rvAdapterForStoreList.updateData(
-        storeListActivityPresenter.getListYouAreLookingFor(s.toString()));
+    rvAdapterForStoreList.updateData(mPresenter.getListYouAreLookingFor(s.toString()));
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {

@@ -11,7 +11,8 @@ import lombok.ToString;
 /**
  * Created by Dimuch on 07.12.2017.
  */
-@ToString @NoArgsConstructor @AllArgsConstructor public class Store {
+@ToString @AllArgsConstructor public class Store {
+  private static int count = 0;
   @Getter @Setter private int id;
   @Getter @Setter private boolean favorite;
   @Getter @Setter private int logoStore = R.drawable.store;
@@ -22,4 +23,9 @@ import lombok.ToString;
   @Getter @Setter @SerializedName("website") private String website;
   @Getter @Setter @SerializedName("phone") private String phone;
   @Getter @Setter @SerializedName("workSchedule") private String workSchedule;
+
+  public Store() {
+    id = count;
+    count++;
+  }
 }

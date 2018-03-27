@@ -18,6 +18,7 @@ import rx.Subscription;
     extends BasePresenter<IStoreListActivityView> {
 
   private List<Store> mStoreList;
+  private List<Store> currentStoreList;
 
   @Override protected void inject() {
     App.getComponent().inject(this);
@@ -27,6 +28,7 @@ import rx.Subscription;
     super.onFirstViewAttach();
 
     mStoreList = new ArrayList<>();
+    currentStoreList = new ArrayList<>();
     updateDataInList();
     //getViewState().updateDataInList(downloadDataForList());
   }
@@ -57,6 +59,11 @@ import rx.Subscription;
         .filter(store -> store.getName().toLowerCase().contains(searchedCombination.toLowerCase()))
         .subscribe(list::add);
 
-    return searchedCombination.isEmpty() ? mStoreList : list;
+    currentStoreList = searchedCombination.isEmpty() ? mStoreList : list;
+    return currentStoreList;
+  }
+
+  public List<Store> getCurrentStoreList() {
+    return currentStoreList;
   }
 }
