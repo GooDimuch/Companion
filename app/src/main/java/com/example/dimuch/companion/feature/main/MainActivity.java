@@ -43,7 +43,6 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
     Intent intent = new Intent(this, StoreListActivity.class);
     startActivity(intent);
     overridePendingTransition(R.anim.move_right_in_activity, R.anim.move_left_out_activity);
-
   }
 
   @OnClick(R.id.bForFuture) public void bForFutureClick(View view) {

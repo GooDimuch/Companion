@@ -49,6 +49,7 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
       //intent.putExtra("item_position", rvAdapterForStoreList.getIdStore(position));
       intent.putExtra("item_position", mPresenter.getCurrentStoreList().get(position).getId());
       startActivity(intent);
+      overridePendingTransition(R.anim.move_right_in_activity, R.anim.move_left_out_activity);
     });
   }
 
