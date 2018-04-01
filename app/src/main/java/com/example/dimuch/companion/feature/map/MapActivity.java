@@ -1,4 +1,4 @@
-package com.example.dimuch.companion.feature.activities;
+package com.example.dimuch.companion.feature.map;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -6,8 +6,6 @@ import butterknife.ButterKnife;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
-import com.example.dimuch.companion.feature.presenters.MapActivityPresenter;
-import com.example.dimuch.companion.feature.views.IMapActivityView;
 
 /**
  * Created by Dimuch on 27.11.2017.

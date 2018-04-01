@@ -1,4 +1,4 @@
-package com.example.dimuch.companion.feature.views;
+package com.example.dimuch.companion.feature.storeList;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndStrategy;

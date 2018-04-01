@@ -1,17 +1,21 @@
 package com.example.dimuch.companion.feature.googleLogin;
+import com.example.dimuch.companion.App;
+import com.example.dimuch.companion.data.model.Profile;
 import java.io.Serializable;
+import javax.inject.Inject;
 
 public class SocialUser implements Serializable {
 
   public String userId;
   public String accessToken;
   public String photoUrl;
-  public Profile profile;
+  @Inject Profile profile;
 
   public SocialUser() {
   }
 
   public SocialUser(SocialUser other) {
+    App.getComponent().inject(this);
     this.userId = other.userId;
     this.accessToken = other.accessToken;
     this.photoUrl = other.photoUrl;
@@ -41,35 +45,5 @@ public class SocialUser implements Serializable {
     sb.append(", profile=").append(profile);
     sb.append('}');
     return sb.toString();
-  }
-
-  public static class Profile implements Serializable {
-    public String name;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String pageLink;
-
-    public Profile() {
-    }
-
-    public Profile(Profile other) {
-      this.name = other.name;
-      this.firstName = other.firstName;
-      this.lastName = other.lastName;
-      this.email = other.email;
-      this.pageLink = other.pageLink;
-    }
-
-    @Override public String toString() {
-      final StringBuilder sb = new StringBuilder("Profile{");
-      sb.append("name='").append(name).append('\'');
-      sb.append(", firstName='").append(firstName).append('\'');
-      sb.append(", lastName='").append(name).append('\'');
-      sb.append(", email='").append(email).append('\'');
-      sb.append(", pageLink='").append(pageLink).append('\'');
-      sb.append('}');
-      return sb.toString();
-    }
   }
 }

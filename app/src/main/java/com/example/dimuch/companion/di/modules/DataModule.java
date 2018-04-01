@@ -2,6 +2,7 @@ package com.example.dimuch.companion.di.modules;
 
 import com.example.dimuch.companion.data.DataManager;
 import com.example.dimuch.companion.data.model.FirebaseRepository;
+import com.example.dimuch.companion.data.model.Profile;
 import com.example.dimuch.companion.data.remote.RestApi;
 import dagger.Module;
 import dagger.Provides;
@@ -14,6 +15,10 @@ import javax.inject.Singleton;
 
   @Provides @Singleton FirebaseRepository provideAllData() {
     return new FirebaseRepository();
+  }
+
+  @Provides @Singleton Profile provideProfile() {
+    return new Profile();
   }
 
   @Provides RestApi provideRestApi(FirebaseRepository firebaseRepository) {

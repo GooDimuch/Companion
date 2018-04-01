@@ -12,7 +12,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.base.BaseActivity;
 import com.example.dimuch.companion.data.model.ShoppingCenter;
-import com.example.dimuch.companion.feature.activities.MainActivity;
+import com.example.dimuch.companion.feature.main.MainActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,23 +59,20 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     // this information can be used for indoor-outdoor detection
     IARegion mCurrentFloorPlan = null;
 
-    @Override
-    public void onEnterRegion(IARegion region) {
+    @Override public void onEnterRegion(IARegion region) {
       if (region.getType() == IARegion.TYPE_FLOOR_PLAN) {
         fetchFloorPlan(region.getId());
         // triggered when entering the mapped area of the given floor plan
-         Timber.e( "Entered " + region.getName());
-         Timber.e( "floor plan ID: " + region.getId());
+        Timber.e("Entered " + region.getName());
+        Timber.e("floor plan ID: " + region.getId());
         mCurrentFloorPlan = region;
-      }
-      else if (region.getType() == IARegion.TYPE_VENUE) {
+      } else if (region.getType() == IARegion.TYPE_VENUE) {
         // triggered when near a new location
-         Timber.e( "Location changed to " + region.getId());
+        Timber.e("Location changed to " + region.getId());
       }
     }
 
-    @Override
-    public void onExitRegion(IARegion region) {
+    @Override public void onExitRegion(IARegion region) {
       // leaving a previously entered region
       if (region.getType() == IARegion.TYPE_FLOOR_PLAN) {
         mCurrentFloorPlan = null;
@@ -93,6 +90,11 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
 
     mIALocationManager = IALocationManager.create(this);
 
+    loadStoresList();
+    loadProfile();
+  }
+
+  private void loadStoresList() {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     //myRef.setValue("Hello, World!");
@@ -105,8 +107,9 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
 
         //Timber.wtf(dataSnapshot.child("ShoppingCenter").getValue(ShoppingCenter.class).toString());
 
-        for (DataSnapshot ds : dataSnapshot.child("ShoppingCenter").child("stores").getChildren()){}
-          //Timber.e("store" + ds.getValue(Store.class));
+        for (DataSnapshot ds : dataSnapshot.child("ShoppingCenter").child("stores").getChildren()) {
+        }
+        //Timber.e("store" + ds.getValue(Store.class));
       }
 
       @Override public void onCancelled(DatabaseError databaseError) {
@@ -130,23 +133,25 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
     mPendingAsyncResult = mIAResourceManager.fetchFloorPlanWithId(id);
     if (mPendingAsyncResult != null) {
       mPendingAsyncResult.setCallback(result -> {
-        Timber.e("onResult: "+ result);
+        Timber.e("onResult: " + result);
 
         if (result.isSuccess()) {
           handleFloorPlanChange(result.getResult());
         } else {
           // do something with error
-          Toast.makeText(SplashActivity.this,
-              "loading floor plan failed: " + result.getError(), Toast.LENGTH_LONG)
-              .show();
+          Toast.makeText(SplashActivity.this, "loading floor plan failed: " + result.getError(),
+              Toast.LENGTH_LONG).show();
         }
       }, Looper.getMainLooper()); // deliver callbacks in main thread
     }
   }
+
   private void handleFloorPlanChange(IAFloorPlan newFloorPlan) {
-    Picasso.get()
-        .load(newFloorPlan.getUrl())
-        .into(ivPlan);
+    Picasso.get().load(newFloorPlan.getUrl()).into(ivPlan);
+  }
+
+  private void loadProfile() {
+
   }
 
   @Override public void setUpUI() {

@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dimuch.companion">
 
-  <uses-feature android:name="android.hardware.sensor.accelerometer"
+  <uses-feature
+      android:name="android.hardware.sensor.accelerometer"
       android:required="true" />
-  <uses-feature android:name="android.hardware.sensor.compass"
+  <uses-feature
+      android:name="android.hardware.sensor.compass"
       android:required="true" />
-  <uses-feature android:name="android.hardware.sensor.gyroscope"
+  <uses-feature
+      android:name="android.hardware.sensor.gyroscope"
       android:required="true" />
-  <uses-feature android:name="android.hardware.wifi"
+  <uses-feature
+      android:name="android.hardware.wifi"
       android:required="true" />
 
   <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -24,35 +28,14 @@
       android:theme="@style/AppTheme">
     <meta-data
         android:name="com.indooratlas.android.sdk.API_KEY"
-        android:value="041a555e-5ee9-4231-aecf-a282b2d49392"/>
+        android:value="041a555e-5ee9-4231-aecf-a282b2d49392" />
     <meta-data
         android:name="com.indooratlas.android.sdk.API_SECRET"
-        android:value="S+fOzNKnYn3WCzGkd53AT6j2Z82CIGxU3frxHJgrDDY97fKNW9AeYu3axAAF4HWbtEdZYkeeVhrRQCoZwOml+MA9EWbJiWdAm9GTeIt6kEwj+WArk8PiIE7WgBo1yQ=="/>
+        android:value="S+fOzNKnYn3WCzGkd53AT6j2Z82CIGxU3frxHJgrDDY97fKNW9AeYu3axAAF4HWbtEdZYkeeVhrRQCoZwOml+MA9EWbJiWdAm9GTeIt6kEwj+WArk8PiIE7WgBo1yQ==" />
 
-    <activity android:name=".feature.activities.MainActivity">
-      <!--<intent-filter>-->
-      <!--<action android:name="android.intent.action.MAIN" />-->
-
-      <!--<category android:name="android.intent.category.LAUNCHER" />-->
-      <!--</intent-filter>-->
-    </activity>
-    <activity
-        android:name=".feature.activities.MapActivity"
-        android:parentActivityName=".feature.activities.MainActivity"></activity>
-    <activity
-        android:name=".feature.activities.StoreListActivity"
-        android:parentActivityName=".feature.activities.MainActivity"></activity>
-    <activity
-        android:name=".feature.activities.StoreActivity"
-        android:theme="@style/AppTheme.NoActionBar"></activity>
-    <activity
-        android:name=".feature.googleLogin.GoogleLoginHiddenActivity"
-        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        android:theme="@style/Theme.AppCompat.Translucent" />
     <activity
         android:name=".feature.splash.SplashActivity"
         android:configChanges="orientation|keyboardHidden|screenSize"
-        android:label="@string/title_activity_splash"
         android:theme="@style/FullscreenTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -60,6 +43,31 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity android:name=".feature.main.MainActivity">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
+    </activity>
+    <activity
+        android:name=".feature.map.MapActivity"
+        android:parentActivityName=".feature.main.MainActivity" />
+    <activity
+        android:name=".feature.storeList.StoreListActivity"
+        android:parentActivityName=".feature.main.MainActivity" />
+    <activity
+        android:name=".feature.store.StoreActivity"
+        android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+        android:name=".feature.googleLogin.GoogleLoginHiddenActivity"
+        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        android:theme="@style/Theme.AppCompat.Translucent" />
+    <activity android:name=".feature.profile.ProfileActivity" />
+
   </application>
 
 </manifest>

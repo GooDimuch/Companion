@@ -5,13 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import com.example.dimuch.companion.feature.activities.MainActivity;
+import com.example.dimuch.companion.data.model.Profile;
+import com.example.dimuch.companion.feature.main.MainActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import javax.inject.Inject;
 import timber.log.Timber;
 
 public class GoogleLoginHiddenActivity extends AppCompatActivity
@@ -60,12 +62,12 @@ public class GoogleLoginHiddenActivity extends AppCompatActivity
       user.userId = acct.getId();
       user.accessToken = acct.getIdToken();
       user.photoUrl = acct.getPhotoUrl() != null ? acct.getPhotoUrl().toString() : "";
-      SocialUser.Profile profile = new SocialUser.Profile();
+      Profile profile = user.profile;
       profile.email = acct.getEmail();
       profile.name = acct.getDisplayName();
       profile.firstName = acct.getGivenName();
       profile.lastName = acct.getFamilyName();
-      user.profile = profile;
+      profile.photoUrl = user.photoUrl;
       Timber.e("handleSignInResult : " +user.toString());
 
       startActivity(new Intent(getApplicationContext(), MainActivity.class));

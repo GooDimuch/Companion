@@ -1,15 +1,19 @@
-package com.example.dimuch.companion.feature.adapters;
+package com.example.dimuch.companion.feature.storeList;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.data.model.Store;
+import com.example.dimuch.companion.utils.Utils;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import timber.log.Timber;
 
@@ -22,13 +26,27 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
     Timber.d("adapter");
   }
 
-  static class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tvStore) TextView tvStore;
+    @BindView(R.id.ivFavorite) ImageView ivFavorite;
 
     ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
+    }
+
+    @OnClick(R.id.ivFavorite) public void onClickFavorite() {
+      if (mStoreList.get(getLayoutPosition()).isFavorite()) {
+        mStoreList.get(getLayoutPosition()).setFavorite(false);
+        Store.countFavorite--;
+      } else {
+        mStoreList.get(getLayoutPosition()).setFavorite(true);
+        Store.countFavorite++;
+      }
+
+      Utils.sortList(mStoreList, Store.countFavorite);
+      notifyDataSetChanged();
     }
   }
 
@@ -40,6 +58,11 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
     holder.tvStore.setText(mStoreList.get(position).getName());
+    if (mStoreList.get(position).isFavorite()) {
+      holder.ivFavorite.setImageResource(R.mipmap.ic_star_true);
+    } else {
+      holder.ivFavorite.setImageResource(R.mipmap.ic_star_false);
+    }
   }
 
   @Override public int getItemCount() {
@@ -55,6 +78,9 @@ public class RVAdapterForStoreList extends RecyclerView.Adapter<RVAdapterForStor
   }
 
   public void updateData(List<Store> viewModels) {
+    for (Store store : viewModels) {
+      Timber.wtf(String.valueOf(store.isFavorite()));
+    }
     mStoreList.clear();
     mStoreList.addAll(viewModels);
     notifyDataSetChanged();

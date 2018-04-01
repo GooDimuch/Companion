@@ -1,12 +1,13 @@
-package com.example.dimuch.companion.feature.presenters;
+package com.example.dimuch.companion.feature.storeList;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.base.BasePresenter;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.views.IStoreListActivityView;
 import com.example.dimuch.companion.utils.ThreadSchedulers;
+import com.example.dimuch.companion.utils.Utils;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import rx.Observable;
 import rx.Subscription;
@@ -19,6 +20,7 @@ import rx.Subscription;
     extends BasePresenter<IStoreListActivityView> {
 
   private List<Store> mStoreList;
+  private List<Store> currentStoreList;
 
   @Override protected void inject() {
     App.getComponent().inject(this);
@@ -28,17 +30,18 @@ import rx.Subscription;
     super.onFirstViewAttach();
 
     mStoreList = new ArrayList<>();
+    currentStoreList = mStoreList;
     updateDataInList();
     //getViewState().updateDataInList(downloadDataForList());
   }
 
   private void updateDataInList() {
-    if (!mStoreList.isEmpty()) getViewState().updateDataInList(mStoreList);
+    if (!mStoreList.isEmpty()) getViewState().updateDataInList(getCurrentStoreList());
     Subscription subscription = mDataManager.getStoreList()
         .compose(ThreadSchedulers.applySchedulers()) // тут просто распаралеливаем задачи по потокам
         .subscribe(stores -> {
           mStoreList.addAll(stores);
-          getViewState().updateDataInList(stores);
+          getViewState().updateDataInList(getCurrentStoreList());
         });
     addToUnsubscription(subscription);
   }
@@ -58,6 +61,12 @@ import rx.Subscription;
         .filter(store -> store.getName().toLowerCase().contains(searchedCombination.toLowerCase()))
         .subscribe(list::add);
 
-    return searchedCombination.isEmpty() ? mStoreList : list;
+    currentStoreList = searchedCombination.isEmpty() ? mStoreList : list;
+    return getCurrentStoreList();
+  }
+
+  public List<Store> getCurrentStoreList() {
+    Utils.sortList(currentStoreList, Store.countFavorite);
+    return currentStoreList;
   }
 }

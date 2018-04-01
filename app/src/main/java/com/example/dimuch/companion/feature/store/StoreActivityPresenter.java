@@ -1,11 +1,10 @@
-package com.example.dimuch.companion.feature.presenters;
+package com.example.dimuch.companion.feature.store;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.data.DataManager;
 import com.example.dimuch.companion.data.model.Store;
-import com.example.dimuch.companion.feature.views.IStoreActivityView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,21 +29,28 @@ import javax.inject.Inject;
     mStoreList = new ArrayList<>();
     mDataManager.getStoreList().subscribe(mStoreList::addAll);
 
-    fillAllView();
+    fillAllView(searchStoreById(idStore));
+  }
+
+  private Store searchStoreById(int idStore) {
+    for (Store store : mStoreList) {
+      if (store.getId() == idStore) return store;
+    }
+    return null;
   }
 
   public void transmitStoreId(int idStore) {
     this.idStore = idStore;
   }
 
-  private void fillAllView() {
-    getViewState().setLogoStore(mStoreList.get(idStore).getLogoStore());
-    getViewState().setNameStore(mStoreList.get(idStore).getName());
-    getViewState().setRatingStore((float) mStoreList.get(idStore).getRating());
-    getViewState().setTypeStore(mStoreList.get(idStore).getType());
-    getViewState().setAddressStore(mStoreList.get(idStore).getAddress());
-    getViewState().setWebSiteStore(mStoreList.get(idStore).getWebsite());
-    getViewState().setPhoneStore(mStoreList.get(idStore).getPhone());
-    getViewState().setWorkScheduleStore(mStoreList.get(idStore).getWorkSchedule());
+  private void fillAllView(Store store) {
+    getViewState().setLogoStore(store.getLogoStore());
+    getViewState().setNameStore(store.getName());
+    getViewState().setRatingStore((float) store.getRating());
+    getViewState().setTypeStore(store.getType());
+    getViewState().setAddressStore(store.getAddress());
+    getViewState().setWebSiteStore(store.getWebsite());
+    getViewState().setPhoneStore(store.getPhone());
+    getViewState().setWorkScheduleStore(store.getWorkSchedule());
   }
 }
