@@ -62,7 +62,11 @@ public class StoreListActivity extends MvpAppCompatActivity implements IStoreLis
 
   @OnTextChanged(R.id.etSearch) public void etSearch(Editable s) {
     showToast(s + " butter");
-    rvAdapterForStoreList.updateData(mPresenter.getListYouAreLookingFor(s.toString()));
+    mPresenter.getListYouAreLookingFor(s.toString());
+  }
+
+  @Override public void updateDataInListBySearch(List<Store> stores) {
+    rvAdapterForStoreList.updateData(stores);
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {

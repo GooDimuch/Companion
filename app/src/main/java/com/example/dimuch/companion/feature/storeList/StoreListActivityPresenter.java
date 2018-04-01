@@ -7,7 +7,6 @@ import com.example.dimuch.companion.data.model.Store;
 import com.example.dimuch.companion.utils.ThreadSchedulers;
 import com.example.dimuch.companion.utils.Utils;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import rx.Observable;
 import rx.Subscription;
@@ -54,15 +53,20 @@ import rx.Subscription;
   //  return mStoreList;
   //}
 
-  public List<Store> getListYouAreLookingFor(String searchedCombination) {
+  public void getListYouAreLookingFor(String searchedCombination) {
     List<Store> list = new ArrayList<>();
 
     Observable.from(mStoreList)
         .filter(store -> store.getName().toLowerCase().contains(searchedCombination.toLowerCase()))
-        .subscribe(list::add);
-
-    currentStoreList = searchedCombination.isEmpty() ? mStoreList : list;
-    return getCurrentStoreList();
+        .toList()
+        .flatMap(stores -> {
+          currentStoreList = searchedCombination.isEmpty() ? mStoreList : stores;
+          return Observable.just(getCurrentStoreList());
+        })
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(stores -> {
+          getViewState().updateDataInListBySearch(stores);
+        });
   }
 
   public List<Store> getCurrentStoreList() {

@@ -15,4 +15,6 @@ import java.util.List;
   void updateDataInList(List<Store> storeNameList);
 
   void showToast(String sToastMessage);
+
+  void updateDataInListBySearch(List<Store> stores);
 }
