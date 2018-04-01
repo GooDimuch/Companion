@@ -12,7 +12,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.dimuch.companion.R;
 import com.example.dimuch.companion.base.BaseActivity;
 import com.example.dimuch.companion.data.model.ShoppingCenter;
-import com.example.dimuch.companion.feature.main.MainActivity;
+import com.example.dimuch.companion.feature.googleLogin.GoogleLoginHiddenActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -167,7 +167,13 @@ public class SplashActivity extends BaseActivity implements ISplashActivityView 
   }
 
   @Override public void moveToNextActivity() {
-    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    //startActivity(intent);
+    Intent intent = new Intent(getApplicationContext(), GoogleLoginHiddenActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID,
+        "923835861335-safjg18e61qaaqlhnn37vo7ed06decdk.apps.googleusercontent.com");
+
     startActivity(intent);
   }
 }

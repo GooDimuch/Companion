@@ -30,13 +30,13 @@ public class ProfileActivity extends BaseActivity implements IProfileActivityVie
   @Override public void updateProfile(Profile profile) {
 
     Picasso.get()
-        .load(profile.photoUrl)
+        .load(profile.getPhotoUrl())
         .fit()
         .placeholder(R.mipmap.ic_launcher_round)
         .into(ivProfilePhoto);
 
-    tvName.setText(profile.name);
-    tvTemp.setText(profile.email);
-    tvTemp2.setText(profile.pageLink);
+    tvName.setText(profile.getName());
+    tvTemp.setText(profile.getEmail());
+    tvTemp2.setText(profile.getPageLink());
   }
 }

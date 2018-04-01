@@ -2,6 +2,8 @@ package com.example.dimuch.companion.data.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by Dimuch on 25.03.2018.
@@ -9,13 +11,13 @@ import java.util.List;
 
 public class Profile {
 
-  public String name;
-  public String firstName;
-  public String lastName;
-  public String email;
-  public String pageLink;
-  public String photoUrl;
-  public List<Store> favoriteStoresList;
+  @Setter @Getter private String name;
+  @Setter @Getter private String firstName;
+  @Setter @Getter private String lastName;
+  @Setter @Getter private String email;
+  @Setter @Getter private String pageLink;
+  @Setter @Getter private String photoUrl;
+  @Setter @Getter private List<Store> favoriteStoresList;
 
   public Profile() {
     favoriteStoresList = new ArrayList<>();

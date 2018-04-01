@@ -2,14 +2,13 @@ package com.example.dimuch.companion.feature.googleLogin;
 import com.example.dimuch.companion.App;
 import com.example.dimuch.companion.data.model.Profile;
 import java.io.Serializable;
-import javax.inject.Inject;
 
 public class SocialUser implements Serializable {
 
   public String userId;
   public String accessToken;
   public String photoUrl;
-  @Inject Profile profile;
+  Profile profile;
 
   public SocialUser() {
   }
